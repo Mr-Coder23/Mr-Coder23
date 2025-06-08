@@ -1,11 +1,4 @@
-- 👋 Hi, I’m Rudramadhab Rath
-- 👀 I’m interested in software engineering...
-- 🌱 I’m currently learning html ...
-- 💞️ I’m looking to collaborate on learning skills...
-- 📫 How to reach me ..
-- .
-
-<!---
-Mr-Coder23/Mr-Coder23 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+HI, I AM RUDRAMADHAB RATH.
+I AM DOING MY BTECH IN CSE FROM ITER SOA UNIVERSITY BHUBANESWAR, ODISHA.
+I AM FROM DHENKANAL, I HAVE PASSED WITH 83 PERCENT IN BOTH 10TH AND 12TH BOARD RESULT.
+AFTER ALL I WANT TO BE A FULL STACK WEB DEVELOPER. FOR THIS I HAVE STARTED LEARNING BOTH FRONT END AND BACKEND.
