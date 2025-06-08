@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Flame</title>
+<style>
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+  }
+
+  .flame-box {
+    position: relative;
+    height: 80px;
+    width: 80px;
+    transform-origin: center bottom;
+    animation: flicker 0.15s infinite alternate ease-in-out;
+  }
+
+  .flame {
+    position: absolute;
+    bottom: 0;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    transform: rotate(-45deg) scale(1.5);
+  }
+
+  .red {
+    height: 60px;
+    width: 60px;
+    left: 10px;
+    background: #ff4500;
+    box-shadow: 0px 0px 15px 6px #ff4500;
+  }
+
+  .orange {
+    height: 50px;
+    width: 50px;
+    left: 15px;
+    background: #ff8c00;
+    box-shadow: 0px 0px 12px 5px #ff8c00;
+  }
+
+  .yellow {
+    height: 35px;
+    width: 35px;
+    left: 22px;
+    background: #ffd700;
+    box-shadow: 0px 0px 10px 5px #ffd700;
+  }
+
+  .white {
+    height: 25px;
+    width: 25px;
+    left: 27px;
+    bottom: -2px;
+    background: #ffffff;
+    box-shadow: 0px 0px 8px 4px #ffffff;
+  }
+
+  .circle {
+    border-radius: 50%;
+    position: absolute;
+  }
+
+  .blue {
+    left: 35px;
+    bottom: -18px;
+    width: 10px;
+    height: 10px;
+    background: #6a5acd;
+    box-shadow: 0px 0px 20px 10px #6a5acd;
+  }
+
+  .black {
+    left: 15px;
+    bottom: -50px;
+    width: 50px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 20px 12px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+  }
+
+  @keyframes flicker {
+    0% { transform: rotate(-1deg) scaleY(1); }
+    20% { transform: rotate(1deg) scaleY(1.03); }
+    40% { transform: rotate(-1deg) scaleY(0.97); }
+    60% { transform: rotate(1deg) scaleY(1.05); }
+    80% { transform: rotate(-2deg) scaleY(0.95); }
+    100% { transform: rotate(1deg) scaleY(1); }
+  }
+</style>
+</head>
+<body>
+
+<div class="flame-box">
+  <div class="red flame"></div>
+  <div class="orange flame"></div>
+  <div class="yellow flame"></div>
+  <div class="white flame"></div>
+  <div class="blue circle"></div>
+  <div class="black circle"></div>
+</div>
+
+</body>
+</html>

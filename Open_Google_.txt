@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Command App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        p {
+            margin-top: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Voice Command App</h1>
+    <button id="start-btn">Start Listening</button>
+    <p id="status">Click the button and say "open Google" or "open YouTube".</p>
+
+    <script>
+        document.getElementById('start-btn').addEventListener('click', function() {
+            if (!('SpeechRecognition' in window) && !('webkitSpeechRecognition' in window)) {
+                alert('Your browser does not support speech recognition.');
+                return;
+            }
+
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+
+            recognition.onstart = function() {
+                document.getElementById('status').textContent = 'Listening... Speak now.';
+            };
+
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                const command = event.results[0][0].transcript.toLowerCase();
+                document.getElementById('status').textContent = `You said: ${command}`;
+
+                if (command.includes('open google')) {
+                    window.open('https://www.google.com', '_blank');
+                } else if (command.includes('open youtube')) {
+                    window.open('https://www.youtube.com', '_blank');
+                } else {
+                    document.getElementById('status').textContent = 'Command not recognized. Please say "open Google" or "open YouTube".';
+                }
+            };
+
+            recognition.onerror = function(event) {
+                document.getElementById('status').textContent = 'Error occurred in recognition: ' + event.error;
+            };
+
+            recognition.onend = function() {
+                document.getElementById('status').textContent = 'Recognition ended. Click the button to start again.';
+            };
+        });
+    </script>
+</body>
+</html>

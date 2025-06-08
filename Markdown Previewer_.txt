@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: Arial, sans-serif;
+}
+body {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-color: #1e1e2e;
+}
+.container {
+display: grid;
+grid-template-columns: 2, 1fr;
+gap: 10px;
+width: 80%;
+height: 80%;
+}
+textarea {
+width: 100%;
+height: 100%;
+padding: 15px;
+background-color: #2e3440;
+color: #eceff4;
+border: none;
+border-radius: 5px;
+resize: none;
+font-size: 16px;
+}
+.preview {
+width: 100%;
+height: 100%;
+padding: 15px;
+background-color: #eceff4;
+color: #2e3440;
+border-radius: 5px;
+overflow-y: auto;
+font-size: 16px;
+}
+h1, h2, h3, p, code, blockquote, ul {
+margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<textarea id="markdown-input" placeholder="Write Markdown here..."></textarea>
+<div id="markdown-preview" class="preview"></div>
+</div>
+<script>
+const markdownInput = document.getElementById('markdown-input');
+const markdownPreview = document.getElementById('markdown-preview');
+const renderMarkdown = (text) => {
+return text
+.replace(/^# (.*$)/gim, '<h1>$1</h1>')
+.replace(/^## (.*$)/gim, '<h2>$1</h2>')
+.replace(/^### (.*$)/gim, '<h3>$1</h3>')
+.replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>')
+.replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+.replace(/\*(.*)\*/gim, '<em>$1</em>')
+.replace(/`(.*?)`/gim, '<code>$1</code>')
+.replace(/\n$/gim, '<br>')
+.replace(/^\s*-\s+(.*)$/gm, '<ul><li>$1</li></ul>');
+};
+markdownInput.addEventListener('input', () => {
+const markdownText = markdownInput.value;
+markdownPreview.innerHTML = renderMarkdown(markdownText);
+});
+markdownPreview.innerHTML = `
+<h3>Markdown Previewer</h3>
+<p>Type and see the live preview!</p>`;
+</script>
+</body>
+</html>

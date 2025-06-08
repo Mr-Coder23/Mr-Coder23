@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+margin: 0;
+height: 100vh;
+overflow: hidden;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: black;
+}
+.loader-box, .loader-box span {
+height: 10em;
+width: 10em;
+border: 0.25em solid #ffffff;
+border-radius: 1em;
+position: absolute;
+mix-blend-mode: screen;
+}
+.loader-box {
+background-color: #ffd700;
+animation: rotating 2s linear infinite;
+}
+@keyframes rotating {
+to {
+transform: rotate(1turn);
+}
+}
+.loader-box span {
+animation: de-rotating 4s linear infinite;
+}
+@keyframes de-rotating {
+from, to {
+transform: rotate(0deg) scale(0.5);
+}
+50% {
+transform: rotate(-180deg) scale(1.2);
+}
+}
+.loader-box span:nth-child(1) {
+top: 5em;
+left: 5em;
+background-color: #1e90ff;
+}
+.loader-box span:nth-child(2) {
+top: -5em;
+left: 5em;
+background-color: #ff69b4;
+}
+.loader-box span:nth-child(3) {
+top: 5em;
+left: -5em;
+background-color: #9370d8;
+}
+.loader-box span:nth-child(4) {
+top: -5em;
+left: -5em;
+background-color: #32cd32;
+}
+</style>
+</head>
+<body>
+<div class="loader-box">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</body>
+</html>

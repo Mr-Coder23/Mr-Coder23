@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: Arial, sans-serif;
+}
+body {
+    
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #f0f0f5;
+}
+.container {
+background-color: #fff;
+padding: 30px;
+border-radius: 10px;
+box-shadow: 0 8px 16px #00000033;
+max-width: 450px;
+text-align: center;
+}
+h1 {
+margin-bottom: 20px;
+color: #333;
+}
+.text {
+margin: 20px 0;
+font-size: 18px;
+color: #555;
+padding: 10px;
+border-radius: 5px;
+background-color: #f9f9f9;
+}
+textarea {
+width: 100%;
+height: 100px;
+margin-top: 10px;
+padding: 10px;
+font-size: 16px;
+border: 2px solid #ddd;
+border-radius: 5px;
+resize: none;
+}
+button {
+margin-top: 20px;
+padding: 10px 20px;
+background-color: #4caf50;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+button:hover {
+background-color: #45a049;
+}
+.result {
+margin-top: 20px;
+font-size: 20px;
+color: #333;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Typing Speed Tester</h2>
+<div class="text" id="textToType">
+The quick brown fox jumps over the lazy dog.
+</div>
+<textarea id="userInput" placeholder="Start typing here..."></textarea>
+<button onclick="calculateSpeed()">Check Speed</button>
+<div class="result" id="result"></div>
+</div>
+<script>
+let startTime;
+document.getElementById('userInput').addEventListener('focus', () => {
+startTime = new Date().getTime();
+});
+function calculateSpeed() {
+const endTime = new Date().getTime();
+const timeTaken = (endTime - startTime) / 1000;
+const originalText = document.getElementById('textToType').innerText;
+const userText = document.getElementById('userInput').value;
+const wordCount = originalText.split(' ').length;
+const typingSpeed = Math.round((wordCount / timeTaken) * 60);
+const resultDiv = document.getElementById('result');
+if (userText === originalText) {
+resultDiv.innerHTML = `Your typing speed is <strong>${typingSpeed} WPM</strong>.`;
+} else {
+resultDiv.innerHTML = `Text does not match. Please try again.`;
+}
+}
+</script>
+</body>
+</html>
